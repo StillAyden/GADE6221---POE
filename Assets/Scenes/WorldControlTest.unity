@@ -331,7 +331,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &413023715
 MonoBehaviour:
@@ -352,6 +352,7 @@ MonoBehaviour:
     m_Bits: 0
   grounded: 0
   overlapRadius: 1.05
+  playerAnim: {fileID: 0}
 --- !u!1 &1019867531
 GameObject:
   m_ObjectHideFlags: 0
