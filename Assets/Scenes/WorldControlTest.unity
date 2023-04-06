@@ -347,12 +347,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 7.5
   movespeed: 300
+  moveForce: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
   grounded: 0
   overlapRadius: 1.05
-  playerAnim: {fileID: 0}
 --- !u!1 &1019867531
 GameObject:
   m_ObjectHideFlags: 0

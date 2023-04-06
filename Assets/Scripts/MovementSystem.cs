@@ -10,6 +10,7 @@ public class MovementSystem : MonoBehaviour
     [Header("Forces")]
     [SerializeField] float jumpForce = 7.5f;
     [SerializeField] float movespeed = 300f;
+    [SerializeField] float moveForce = 10f;
 
     [Header("Jump Limit")]
     [SerializeField] LayerMask groundLayer;
@@ -18,7 +19,7 @@ public class MovementSystem : MonoBehaviour
 
     InputSystem _inputs;
     Rigidbody rb;
-    Vector2 moveInput; //Only need 2 axids for forward, backward, left, right movement
+    float moveInput; //Only need 2 axids for forward, backward, left, right movement
     bool doubleJump = true;
 
     private void Awake() //Executed before Start, good for setting veriables
@@ -33,31 +34,23 @@ public class MovementSystem : MonoBehaviour
 
         _inputs.Player.Enable(); //Need to enable the action map on the Input System we have created
 
+        _inputs.Player.Jump.performed += x => MovePlayer();
         _inputs.Player.Move.performed += OnMove;
-
-        _inputs.Player.Jump.performed += x => Jump();
+        _inputs.Player.SlideForceDown.performed += x => MovePlayer();
 
         Camera.main.transform.parent = this.transform; //Laxy man's way of attaching camera to Player
     }
 
-    void Jump()
+    void MovePlayer()
     {
-        if (grounded || doubleJump)
+        
+        if (_inputs.Player.Jump.triggered) //Move Forward 
         {
-            if (grounded)
-            {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                doubleJump = true;
-            }
-            else if (doubleJump & !grounded)
-            {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                doubleJump = false;
-            }
-            else if (grounded && !doubleJump)
-            {
-                doubleJump = true;
-            }
+            rb.AddForce(moveForce * Vector3.up, ForceMode.Impulse);
+        }
+        else if (_inputs.Player.SlideForceDown.triggered)  //Move Backward
+        {
+            rb.AddForce(moveForce * Vector3.down, ForceMode.Impulse);
 
         }
     }
@@ -67,27 +60,18 @@ public class MovementSystem : MonoBehaviour
         //Input x = A & D Keys (But saved in the x value of our Vector 2)
         //Input y = W & S Keys (But saved in the y value of our Vector 2)
         //Save relevent/needed  information reived from input
-        moveInput = info.ReadValue<Vector2>();
+        moveInput = info.ReadValue<float>();
     }
 
     private void FixedUpdate() //Constant, No jarring or delays
     {
         //Make Player move here when keyboard input is received
         //In order to make player move, we will be adding velocity to the Rigidbody
-        rb.velocity = new Vector3(moveInput.x * movespeed * Time.fixedDeltaTime, rb.velocity.y, moveInput.y * movespeed * Time.fixedDeltaTime);
+        rb.velocity = new Vector3(moveInput * movespeed * Time.fixedDeltaTime, rb.velocity.y, rb.velocity.z);
     }
 
     private void Update()
     {
         grounded = Physics.CheckSphere(transform.position, overlapRadius, groundLayer);
-    }
-
-
-    private void OnDisable()
-    {
-        //Unsubscribe to the events for safety
-        _inputs.Player.Move.performed -= OnMove;
-
-        _inputs.Player.Jump.performed -= x => Jump();
     }
 }
