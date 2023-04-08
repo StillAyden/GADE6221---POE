@@ -350,9 +350,9 @@ MonoBehaviour:
   moveForce: 10
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   grounded: 0
-  overlapRadius: 1.05
+  overlapRadius: 0.51
 --- !u!1 &1019867531
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,9 +387,9 @@ MonoBehaviour:
   - {fileID: 4671801280507924012, guid: 36390febfd06e6547b50a06aab83ffcc, type: 3}
   - {fileID: 4725976698344978891, guid: 88be3fa058235cd478f0f5e5f7a54520, type: 3}
   groundPrefabSize: 10
-  moveSpeed: 1
   prefabsLoaded: 5
   despawnPoint: -10
+  moveSpeed: 1
 --- !u!4 &1019867533
 Transform:
   m_ObjectHideFlags: 0

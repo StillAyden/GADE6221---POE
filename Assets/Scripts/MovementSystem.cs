@@ -20,7 +20,6 @@ public class MovementSystem : MonoBehaviour
     InputSystem _inputs;
     Rigidbody rb;
     float moveInput; //Only need 2 axids for forward, backward, left, right movement
-    bool doubleJump = true;
 
     private void Awake() //Executed before Start, good for setting veriables
     {
@@ -44,11 +43,11 @@ public class MovementSystem : MonoBehaviour
     void MovePlayer()
     {
         
-        if (_inputs.Player.Jump.triggered) //Move Forward 
+        if (_inputs.Player.Jump.triggered && grounded) //Jump Upwards
         {
             rb.AddForce(moveForce * Vector3.up, ForceMode.Impulse);
         }
-        else if (_inputs.Player.SlideForceDown.triggered)  //Move Backward
+        else if (_inputs.Player.SlideForceDown.triggered)  //Force/Slide downward
         {
             rb.AddForce(moveForce * Vector3.down, ForceMode.Impulse);
 
@@ -58,7 +57,6 @@ public class MovementSystem : MonoBehaviour
     private void OnMove(InputAction.CallbackContext info)
     {
         //Input x = A & D Keys (But saved in the x value of our Vector 2)
-        //Input y = W & S Keys (But saved in the y value of our Vector 2)
         //Save relevent/needed  information reived from input
         moveInput = info.ReadValue<float>();
     }
@@ -66,7 +64,7 @@ public class MovementSystem : MonoBehaviour
     private void FixedUpdate() //Constant, No jarring or delays
     {
         //Make Player move here when keyboard input is received
-        //In order to make player move, we will be adding velocity to the Rigidbody
+        //Adding velocity to the Rigidbody
         rb.velocity = new Vector3(moveInput * movespeed * Time.fixedDeltaTime, rb.velocity.y, rb.velocity.z);
     }
 
