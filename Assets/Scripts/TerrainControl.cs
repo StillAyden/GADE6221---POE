@@ -33,9 +33,7 @@ public class TerrainControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        TileSpawn();
-        MoveTiles();
-        DespawnTiles();
+        TileManagement();
     }
 
     GameObject RandomPrefab()
@@ -54,51 +52,52 @@ public class TerrainControl : MonoBehaviour
             {
                 //loadedGroundedPrefabs[k] = RandomPrefab();
                 loadedGroundedPrefabs[k] = Instantiate(RandomPrefab());
-                loadedGroundedPrefabs[k].transform.position = new Vector3( 0, 0, tileSpawnPoints[k]); 
+                loadedGroundedPrefabs[k].transform.position = new Vector3( 0, 0, tileSpawnPoints[k]);
+                loadedGroundedPrefabs[k].tag = "Ground";
             }
         }
     }
 
-    void TileSpawn()
+    void TileManagement()
     {
-        //Check if one of the loaded prefabs has been despawned, then add one
         for (int k = 0; k < loadedGroundedPrefabs.Length; k++)
         {
             if (loadedGroundedPrefabs[k] == null)
             {
-                loadedGroundedPrefabs[k] = Instantiate(RandomPrefab());
-                loadedGroundedPrefabs[k].transform.position = new Vector3(0, 0, groundPrefabSize * (prefabsLoaded - 1));
+                TileSpawn(k);
             }
+            else
+            {
+                MoveTiles(k);
+                DespawnTiles(k);
+            }
+            
         }
+        
+    }
+    void TileSpawn(int k)
+    {
+        //add prefab if one is despawned
+        loadedGroundedPrefabs[k] = Instantiate(RandomPrefab());
+        loadedGroundedPrefabs[k].transform.position = new Vector3(0, 0, groundPrefabSize * (prefabsLoaded - 1));
+        loadedGroundedPrefabs[k].tag = "Ground";
     }
 
-    void DespawnTiles()
+    void DespawnTiles(int k)
     {
         //Check if every prefab is infront of "despawnPoint", else destroy it
-        for(int k = 0; k < loadedGroundedPrefabs.Length; k++)
+        if (loadedGroundedPrefabs[k].transform.position.z < despawnPoint)
         {
-            if (loadedGroundedPrefabs[k] != null)
-            {
-                if (loadedGroundedPrefabs[k].transform.position.z < despawnPoint)
-                {
-                    Destroy(loadedGroundedPrefabs[k]);
-                    loadedGroundedPrefabs[k] = null;
-                }
-            }
+            Destroy(loadedGroundedPrefabs[k]);
+            loadedGroundedPrefabs[k] = null;
         }
     }
 
-    void MoveTiles()
+    void MoveTiles(int k)
     {
-        //Go through all Loaded prefabs and move them
-        for (int k = 0; k < loadedGroundedPrefabs.Length; k++)
-        {
-            if (loadedGroundedPrefabs[k] != null)
-            {
-                loadedGroundedPrefabs[k].transform.position = new Vector3(loadedGroundedPrefabs[k].transform.position.x, 
-                                                                            loadedGroundedPrefabs[k].transform.position.y, 
-                                                                                loadedGroundedPrefabs[k].transform.position.z + moveSpeed * -1 * Time.deltaTime);
-            }
-        }
+        //Move specific tile in loaded array
+        loadedGroundedPrefabs[k].transform.position = new Vector3(loadedGroundedPrefabs[k].transform.position.x,
+                                                                    loadedGroundedPrefabs[k].transform.position.y,
+                                                                        loadedGroundedPrefabs[k].transform.position.z + moveSpeed * -1 * Time.deltaTime);
     }
 }
