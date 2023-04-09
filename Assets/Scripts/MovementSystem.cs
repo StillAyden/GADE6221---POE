@@ -8,7 +8,6 @@ using UnityEngine.Windows;
 public class MovementSystem : MonoBehaviour
 {
     [Header("Forces")]
-    [SerializeField] float jumpForce = 7.5f;
     [SerializeField] float movespeed = 300f;
     [SerializeField] float moveForce = 10f;
 

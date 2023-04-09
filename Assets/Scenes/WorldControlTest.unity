@@ -345,14 +345,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b755aa35456452e40b569ef81d017223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 7.5
   movespeed: 300
   moveForce: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  grounded: 0
-  overlapRadius: 0.51
+  grounded: 1
+  overlapRadius: 1.12
 --- !u!1 &1019867531
 GameObject:
   m_ObjectHideFlags: 0

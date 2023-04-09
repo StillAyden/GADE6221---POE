@@ -53,7 +53,7 @@ public class TerrainControl : MonoBehaviour
                 //loadedGroundedPrefabs[k] = RandomPrefab();
                 loadedGroundedPrefabs[k] = Instantiate(RandomPrefab());
                 loadedGroundedPrefabs[k].transform.position = new Vector3( 0, 0, tileSpawnPoints[k]);
-                loadedGroundedPrefabs[k].tag = "Ground";
+                loadedGroundedPrefabs[k].layer = 6;
             }
         }
     }
@@ -80,7 +80,7 @@ public class TerrainControl : MonoBehaviour
         //add prefab if one is despawned
         loadedGroundedPrefabs[k] = Instantiate(RandomPrefab());
         loadedGroundedPrefabs[k].transform.position = new Vector3(0, 0, groundPrefabSize * (prefabsLoaded - 1));
-        loadedGroundedPrefabs[k].tag = "Ground";
+        loadedGroundedPrefabs[k].layer = 6;
     }
 
     void DespawnTiles(int k)
