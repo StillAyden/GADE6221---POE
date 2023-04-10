@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5311677717793743491}
   - component: {fileID: 1473404660389673858}
+  - component: {fileID: 350674950897750689}
   m_Layer: 0
   m_Name: ScoreMultiplier
   m_TagString: Untagged
@@ -45,7 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b9759b612b7c34b94f0a4842a43642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 0
+  pickupType: 0
+  multiplierIncreaseAmount: 0.5
+  JumpBoostAmount: 0
+--- !u!135 &350674950897750689
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095183466858720845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5259231599517982180
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +73,6 @@ GameObject:
   - component: {fileID: 7209005408804893679}
   - component: {fileID: 4874412017798557194}
   - component: {fileID: 3545798878484826249}
-  - component: {fileID: 4852868497658278186}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -108,7 +123,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d24abb6498903bd4aaebb5423c6fdd46, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,16 +145,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4852868497658278186
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5259231599517982180}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.63
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940699}

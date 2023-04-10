@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour
 {
-    public float score = 0;
-    public float multiplier = 1;
+    public float score = 0f;
+    public float multiplier = 1f;
 
     private void OnTriggerExit(Collider col)
     {

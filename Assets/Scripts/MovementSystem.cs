@@ -20,6 +20,15 @@ public class MovementSystem : MonoBehaviour
     Rigidbody rb;
     float moveInput; //Only need 2 axids for forward, backward, left, right movement
 
+    private void OnEnable()
+    {
+        _inputs.Enable();
+    }
+    private void OnDisable()
+    {
+        _inputs.Disable();
+    }
+
     private void Awake() //Executed before Start, good for setting veriables
     {
         //Connect Rigidbody component of Player

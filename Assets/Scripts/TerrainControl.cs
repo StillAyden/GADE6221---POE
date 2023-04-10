@@ -45,13 +45,13 @@ public class TerrainControl : MonoBehaviour
 
     void InitialTileSpawn()
     {
-        //Choosing Prefab and populating array
-        for (int k = 0; k < loadedGroundedPrefabs.Length; k++)
+        //Choosing Floor prefab and populating array
+        //*Note: first few tiles will have no obstacles
+        for (int k = 1; k < loadedGroundedPrefabs.Length; k++)
         {
             if (loadedGroundedPrefabs[k] == null)
             {
-                //loadedGroundedPrefabs[k] = RandomPrefab();
-                loadedGroundedPrefabs[k] = Instantiate(RandomPrefab());
+                loadedGroundedPrefabs[k] = Instantiate(groundPrefabCollection[0]);
                 loadedGroundedPrefabs[k].transform.position = new Vector3( 0, 0, tileSpawnPoints[k]);
                 loadedGroundedPrefabs[k].layer = 6;
             }

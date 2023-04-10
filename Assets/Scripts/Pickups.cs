@@ -43,7 +43,7 @@ public class Pickups : MonoBehaviour
 
     void ScoreMultiplier()
     {
-        scoreCounter.multiplier += multiplierIncreaseAmount;
+        scoreCounter.multiplier = scoreCounter.multiplier + multiplierIncreaseAmount;
     }
 
     void JumpBoost()
