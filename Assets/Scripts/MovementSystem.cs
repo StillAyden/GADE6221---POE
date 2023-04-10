@@ -8,7 +8,7 @@ using UnityEngine.Windows;
 public class MovementSystem : MonoBehaviour
 {
     [Header("Forces")]
-    [SerializeField] float movespeed = 300f;
+    [SerializeField] float moveSpeed = 300f;
     [SerializeField] float moveForce = 10f;
 
     [Header("Jump Limit")]
@@ -64,7 +64,7 @@ public class MovementSystem : MonoBehaviour
     {
         //Make Player move here when keyboard input is received
         //Adding velocity to the Rigidbody
-        rb.velocity = new Vector3(moveInput * movespeed * Time.fixedDeltaTime, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(moveInput * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, rb.velocity.z);
     }
 
     private void Update()

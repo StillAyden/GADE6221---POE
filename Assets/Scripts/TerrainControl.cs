@@ -14,7 +14,7 @@ public class TerrainControl : MonoBehaviour
     [SerializeField] float despawnPoint = -10;
     
     [Header("Movement")]
-    [SerializeField] float moveSpeed = 1f;
+    public float moveSpeed = 1f;
     private void Awake()
     {
         loadedGroundedPrefabs = new GameObject[prefabsLoaded];
