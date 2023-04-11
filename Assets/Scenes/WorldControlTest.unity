@@ -546,7 +546,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   grounded: 1
-  overlapRadius: 1.12
+  overlapRadius: 1.05
 --- !u!65 &413023717
 BoxCollider:
   m_ObjectHideFlags: 0
