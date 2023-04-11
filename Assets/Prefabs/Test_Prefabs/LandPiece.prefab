@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 592326131516301593}
   - component: {fileID: 592326131516301592}
   - component: {fileID: 592326131516301599}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4581556551505407311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LandPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
