@@ -52,6 +52,7 @@ public class MovementSystem : MonoBehaviour
 
     void MovePlayer()
     {
+        //Lets the Player jump, as well as force itself down towards the ground
         
         if (_inputs.Player.Jump.triggered && grounded) //Jump Upwards
         {
@@ -66,6 +67,7 @@ public class MovementSystem : MonoBehaviour
 
     void Restart()
     {
+        //By pressing the key "r" you can restart the game from any time frame
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
