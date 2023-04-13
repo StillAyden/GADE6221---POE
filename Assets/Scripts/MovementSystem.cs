@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 
 public class MovementSystem : MonoBehaviour
@@ -20,13 +21,12 @@ public class MovementSystem : MonoBehaviour
     Rigidbody rb;
     float moveInput; //Only need 2 axids for forward, backward, left, right movement
 
-    private void OnEnable()
-    {
-        _inputs.Enable();
-    }
     private void OnDisable()
     {
-        _inputs.Disable();
+        _inputs.Player.Jump.performed -= x => MovePlayer();
+        _inputs.Player.Move.performed -= OnMove;
+        _inputs.Player.SlideForceDown.performed -= x => MovePlayer();
+        _inputs.Player.Restart.performed -= x => Restart();
     }
 
     private void Awake() //Executed before Start, good for setting veriables
@@ -44,7 +44,9 @@ public class MovementSystem : MonoBehaviour
         _inputs.Player.Jump.performed += x => MovePlayer();
         _inputs.Player.Move.performed += OnMove;
         _inputs.Player.SlideForceDown.performed += x => MovePlayer();
+        _inputs.Player.Restart.performed += x => Restart();
 
+        
         Camera.main.transform.parent = this.transform; //Laxy man's way of attaching camera to Player
     }
 
@@ -60,6 +62,11 @@ public class MovementSystem : MonoBehaviour
             rb.AddForce(moveForce * Vector3.down, ForceMode.Impulse);
 
         }
+    }
+
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnMove(InputAction.CallbackContext info)
