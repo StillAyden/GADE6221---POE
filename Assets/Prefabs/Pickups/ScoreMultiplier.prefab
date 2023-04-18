@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupType: 0
   multiplierAmount: 2
-  multiplierActivationLength: 0.2
+  multiplierActivationLength: 5
   JumpBoostAmount: 0
 --- !u!135 &350674950897750689
 SphereCollider:
