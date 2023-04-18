@@ -15,6 +15,7 @@ public class TerrainControl : MonoBehaviour
     
     [Header("Movement")]
     public float moveSpeed = 1f;
+
     private void Awake()
     {
         loadedGroundedPrefabs = new GameObject[prefabsLoaded];
@@ -79,7 +80,7 @@ public class TerrainControl : MonoBehaviour
     {
         //add prefab if one is despawned
         loadedGroundedPrefabs[k] = Instantiate(RandomPrefab());
-        loadedGroundedPrefabs[k].transform.position = new Vector3(0, 0, groundPrefabSize * (prefabsLoaded - 1));
+        loadedGroundedPrefabs[k].transform.position = new Vector3(0, 0, tileSpawnPoints[prefabsLoaded - 1]);
         loadedGroundedPrefabs[k].layer = 6;
     }
 

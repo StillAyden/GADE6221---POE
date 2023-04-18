@@ -8,7 +8,9 @@ public class Pickups : MonoBehaviour
     
     [Header("Score Multiplier")]
     ScoreCounter scoreCounter;
-    [SerializeField] float multiplierIncreaseAmount = 0.5f;
+    //[SerializeField] float multiplierIncreaseAmount = 0.5f;
+    [SerializeField] float multiplierAmount = 2f;
+    [SerializeField] float multiplierActivationLength = 5.0f;
 
     [Header("JumpBoost")]
     [SerializeField] float JumpBoostAmount;
@@ -33,6 +35,8 @@ public class Pickups : MonoBehaviour
             if(pickupType == PickupType.ScoreMultiplier)
             {
                 ScoreMultiplier();
+                //Invoke("EndScoreMultiplier", 5f);
+                StartCoroutine(EndScoreMultiplier());
             }
             else if (pickupType == PickupType.JumpBoost)
             {
@@ -43,11 +47,19 @@ public class Pickups : MonoBehaviour
 
     void ScoreMultiplier()
     {
-        scoreCounter.multiplier = scoreCounter.multiplier + multiplierIncreaseAmount;
+        scoreCounter.multiplier =  multiplierAmount;
+    }
+
+    IEnumerator EndScoreMultiplier()
+    {
+        yield return new WaitForSeconds(multiplierActivationLength);
+        scoreCounter.multiplier = 1f;
     }
 
     void JumpBoost()
     {
-
+        //Not yet implemented
     }
+
+   
 }
