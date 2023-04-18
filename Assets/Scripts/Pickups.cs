@@ -10,11 +10,12 @@ public class Pickups : MonoBehaviour
     ScoreCounter scoreCounter;
     //[SerializeField] float multiplierIncreaseAmount = 0.5f;
     [SerializeField] float multiplierAmount = 2f;
-    [SerializeField] float multiplierActivationLength = 5.0f;
+    [SerializeField] float multiplierActivationLength = 0.2f;
 
     [Header("JumpBoost")]
     [SerializeField] float JumpBoostAmount;
-    
+
+    bool multiplying = false;
 
     private void Awake()
     {
@@ -34,8 +35,15 @@ public class Pickups : MonoBehaviour
             Destroy(this.gameObject);
             if(pickupType == PickupType.ScoreMultiplier)
             {
+                if(multiplying)
+                {
+                    StopCoroutine(EndScoreMultiplier());
+                    Debug.Log("Routine Stop");
+                    multiplying = false;
+                }
+
                 ScoreMultiplier();
-                //Invoke("EndScoreMultiplier", 5f);
+                // Invoke("EndScoreMultiplier", 5f);
                 StartCoroutine(EndScoreMultiplier());
             }
             else if (pickupType == PickupType.JumpBoost)
@@ -52,8 +60,12 @@ public class Pickups : MonoBehaviour
 
     IEnumerator EndScoreMultiplier()
     {
-        yield return new WaitForSeconds(multiplierActivationLength);
+        multiplying = true;
+        Debug.Log("Routine started");
+        yield return new WaitForSeconds(0.2f);
+        Debug.Log("Routine done");
         scoreCounter.multiplier = 1f;
+        multiplying = false;    
     }
 
     void JumpBoost()
