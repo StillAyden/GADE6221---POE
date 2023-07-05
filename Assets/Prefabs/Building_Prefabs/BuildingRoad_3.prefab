@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2619813473582330950}
   - component: {fileID: 8843421130678512245}
+  - component: {fileID: 6898030466212414298}
+  - component: {fileID: 6407764763546882313}
   m_Layer: 6
   m_Name: BuildingRoad_3
   m_TagString: Untagged
@@ -44,8 +46,34 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 32.98992, y: 1, z: 32.94373}
-  m_Center: {x: -3.2020311, y: 0, z: 0.8203316}
+  m_Size: {x: 29.499577, y: 1, z: 32.94373}
+  m_Center: {x: -3.1114597, y: 0, z: 0.8203316}
+--- !u!65 &6898030466212414298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414026192239167364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 29.761715, y: 27.098385, z: 2.0961156}
+  m_Center: {x: -3.043684, y: 12.104212, z: -16.209267}
+--- !u!65 &6407764763546882313
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414026192239167364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 29.761707, y: 27.098381, z: 1.9603543}
+  m_Center: {x: -3.043684, y: 12.10421, z: 16.810911}
 --- !u!1001 &2317448154439480586
 PrefabInstance:
   m_ObjectHideFlags: 0

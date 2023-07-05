@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 284911795685367187}
   - component: {fileID: 8364623148073079861}
+  - component: {fileID: 6933672112670206354}
+  - component: {fileID: 8344863071747636098}
   m_Layer: 6
   m_Name: BuildingTop_4
   m_TagString: Untagged
@@ -46,6 +48,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 29.753483, y: 33.058205, z: 22.9257}
   m_Center: {x: 0.9988556, y: -15.396109, z: -10.96285}
+--- !u!65 &6933672112670206354
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072668480936426778}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 31.58797, y: 30.050129, z: 1.4206764}
+  m_Center: {x: 1.6600323, y: 14.525064, z: 0.6320343}
+--- !u!65 &8344863071747636098
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072668480936426778}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 29.719696, y: 30.707428, z: 1.8527637}
+  m_Center: {x: 1.1530704, y: 14.853714, z: -22.773676}
 --- !u!1001 &3090202316178286390
 PrefabInstance:
   m_ObjectHideFlags: 0
