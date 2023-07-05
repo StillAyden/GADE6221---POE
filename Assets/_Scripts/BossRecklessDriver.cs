@@ -10,7 +10,7 @@ public class BossRecklessDriver : MonoBehaviour
     [Header("Boss Stats")]
     bool isActive = false;
     [SerializeField] float timeActive = 30f;
-    [Range(0.1f, 10f)][SerializeField] float speed = 2f;
+    [Range(0.1f, 100f)][SerializeField] float speed = 2f;
 
     [Header("Boss Attack")]
     [SerializeField] float[] lanesXPos = { -2.5f, 0, 2.5f };
