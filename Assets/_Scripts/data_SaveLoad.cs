@@ -39,7 +39,7 @@ public class data_SaveLoad : MonoBehaviour
 
         leaderboardList.AddToList(scoreData); 
 
-        string _data = JsonUtility.ToJson(leaderboardList);
+        string _data = JsonUtility.ToJson(leaderboardList.allScoreData);
         File.WriteAllText(filePath, _data);
 
         Debug.Log("SAVE");
@@ -82,7 +82,7 @@ public class data_SaveLoad : MonoBehaviour
         {
             foreach(var player in leaderboardList.allScoreData)
             {
-                data += player.username + " : " + player.score.ToString() + "| Level: " + player.levelScore + "\n";
+                data += player.username + " : " + player.score.ToString() + " | Level: " + player.levelScore + "\n";
             }
         }
 

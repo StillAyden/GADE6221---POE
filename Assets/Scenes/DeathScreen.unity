@@ -1925,3 +1925,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInput: {fileID: 1757456744}
+  score: {fileID: 1564995302}
+  level: {fileID: 1277698606}

@@ -21,4 +21,9 @@ public class GameEventTrigger : MonoBehaviour
         GameEventSystem.instance.onObstaclePassed(col.gameObject);
     }
 
+    private void OnLevelWasLoaded(int level)
+    {
+        GameEventSystem.instance.onBossSpawn();
+    }
+
 }

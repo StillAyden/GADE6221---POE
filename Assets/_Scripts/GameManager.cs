@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         ScoreData.instance.levelScore++;
     }
 
-    IEnumerator halfLevelTimer()
+    public IEnumerator halfLevelTimer()
     {
         yield return new WaitForSeconds(levelLengthInSeconds);
         isHalfway = true;

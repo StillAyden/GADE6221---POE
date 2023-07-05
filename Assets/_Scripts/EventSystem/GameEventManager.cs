@@ -34,7 +34,7 @@ public class GameEventManager : MonoBehaviour
     }
     void spawnBoss()
     {
-
+        StartCoroutine(GameManager.instance.halfLevelTimer());
     }
     void increaseLevelScore()
     {

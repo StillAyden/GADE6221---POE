@@ -41,6 +41,7 @@ Transform:
   - {fileID: 5400707419749697613}
   - {fileID: 5400707420628149516}
   - {fileID: 5400707420117609108}
+  - {fileID: 8149493244467937615}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,9 +58,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLength: 40
+  levelLengthInSeconds: 0
   bossOrb: {fileID: 8983951393544843114, guid: ef45d62ea2270ef44890766832091eed, type: 3}
   initialSpawn: {fileID: 5400707420628149516}
   isOrbBossActive: 0
+  recklessDriver: {fileID: 0}
+  driverInitialSpawn: {fileID: 0}
 --- !u!114 &5400707418861446347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasReference: {fileID: 0}
+  LeaderboardScores: {fileID: 0}
 --- !u!114 &5400707418861446358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,4 +352,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5400707418861446346}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9142883756239604235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8149493244467937615}
+  m_Layer: 0
+  m_Name: RecklessDriverSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8149493244467937615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142883756239604235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7.19, z: -21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5400707418861446346}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

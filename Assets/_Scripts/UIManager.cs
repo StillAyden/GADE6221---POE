@@ -23,9 +23,11 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+
         scoreCounter = GetComponent<ScoreCounter>();
         playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
 
+        HUD.gameObject.SetActive(true);
         DontDestroyOnLoad(HUD);
         DontDestroyOnLoad(deathScreen);
     }

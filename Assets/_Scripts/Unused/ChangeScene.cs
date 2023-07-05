@@ -8,6 +8,14 @@ public class ChangeScene : MonoBehaviour
 {
     [SerializeField] InputField nameInput;
 
+    [SerializeField] Text score;
+    [SerializeField] Text level;
+
+    private void Awake()
+    {
+        score.text = ScoreData.instance.score.ToString();
+        level.text = "Level: " + ScoreData.instance.levelScore;
+    }
     public void MoveToScene(int SceneID)
     {
         SceneManager.LoadScene(SceneID);

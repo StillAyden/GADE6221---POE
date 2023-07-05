@@ -27,7 +27,7 @@ public class TerrainControl : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 1f;
 
-    private void OnEnable()
+    private void OnLevelWasLoaded(int level)
     {
         GetPrefabs();
         loadedGroundedPrefabs = new GameObject[prefabsLoaded];
@@ -36,10 +36,18 @@ public class TerrainControl : MonoBehaviour
         //Populate spawn points
         for (int i = 0; i < prefabsLoaded; i++)
         {
-            tileSpawnPoints[i] = i * groundPrefabSize;
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("WorldControlTest"))
+            {
+                tileSpawnPoints[i] = i * groundPrefabSize;
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_2"))
+            {
+                tileSpawnPoints[i] = i * groundPrefabSize * 1.7f;
+            }
         }
 
         InitialTileSpawn();
+        
     }
 
     private void FixedUpdate()
