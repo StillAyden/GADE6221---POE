@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2779581035020947292}
   - component: {fileID: 392523953455389792}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,9 +97,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -532332652789533958, guid: e5af68f5c8c8d314e96bcfed9cab5383, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e5af68f5c8c8d314e96bcfed9cab5383, type: 3}
       propertyPath: m_Name
       value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e5af68f5c8c8d314e96bcfed9cab5383, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433691063559197078, guid: e5af68f5c8c8d314e96bcfed9cab5383, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417252723825943462, guid: e5af68f5c8c8d314e96bcfed9cab5383, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5af68f5c8c8d314e96bcfed9cab5383, type: 3}

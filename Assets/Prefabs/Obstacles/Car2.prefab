@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8792814109193324937}
   - component: {fileID: 8886891279785917886}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Car2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14b1d88d1eb55fd489c8d16449d57995, type: 3}
       propertyPath: m_Name
       value: Car2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14b1d88d1eb55fd489c8d16449d57995, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193905158150273507, guid: 14b1d88d1eb55fd489c8d16449d57995, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426920489340327430, guid: 14b1d88d1eb55fd489c8d16449d57995, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b1d88d1eb55fd489c8d16449d57995, type: 3}

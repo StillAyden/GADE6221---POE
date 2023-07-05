@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4211879459866432701}
   - component: {fileID: 4787749300703306946}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,9 +97,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5971784924495850608, guid: 6ffc0f7005b14ab44aa45e573ed2993b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6ffc0f7005b14ab44aa45e573ed2993b, type: 3}
       propertyPath: m_Name
       value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ffc0f7005b14ab44aa45e573ed2993b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824746026288583490, guid: 6ffc0f7005b14ab44aa45e573ed2993b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741093373640088274, guid: 6ffc0f7005b14ab44aa45e573ed2993b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ffc0f7005b14ab44aa45e573ed2993b, type: 3}

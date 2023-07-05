@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2217078189443602679}
   - component: {fileID: 1406520632252505964}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Car1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,9 +97,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7994585874600938071, guid: d3e9905314db89047b7ab27826bdc6fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1904759462947714476, guid: d3e9905314db89047b7ab27826bdc6fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d3e9905314db89047b7ab27826bdc6fa, type: 3}
       propertyPath: m_Name
       value: Car1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d3e9905314db89047b7ab27826bdc6fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3e9905314db89047b7ab27826bdc6fa, type: 3}
