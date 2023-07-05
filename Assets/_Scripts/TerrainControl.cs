@@ -43,8 +43,8 @@ public class TerrainControl : MonoBehaviour
             }
             else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_2"))
             {
-                tileSpawnPoints[i] = i * groundPrefabSize * 3f;
-                despawnPoint = -30f;
+                tileSpawnPoints[i] = i * (groundPrefabSize * 1f);
+                despawnPoint = -20f;
             }
         }
 

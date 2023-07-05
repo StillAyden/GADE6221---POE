@@ -18,8 +18,14 @@ public class BossRecklessDriver : MonoBehaviour
 
     private void Awake()
     {
+        selectedLane = Random.Range(0, 2);
         //gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody>();
+        this.transform.position = new Vector3((this.transform.position.x + lanesXPos[selectedLane]), 
+                                                this.transform.position.y, 
+                                                    this.transform.position.z);
+
+        StartCoroutine(BossMechanic());
     }
 
     private void FixedUpdate()
@@ -33,6 +39,7 @@ public class BossRecklessDriver : MonoBehaviour
         //Change all lane types to plain/flat
         //Choose Lane
         //
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(15f);
+        Destroy(this);
     }
 }

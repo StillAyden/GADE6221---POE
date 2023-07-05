@@ -57,12 +57,14 @@ public class PlayerManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField]AudioSource coinPickupSound;
     [SerializeField] AudioSource jumpSound;
+    [SerializeField] AudioSource walkSound;
     private void Awake()
     {
 
         //DontDestroyOnLoad(this);
         instance = this;
         inputs = new InputSystem();
+        inputs.Player.Enable();
         rb = GetComponent<Rigidbody>();
 
         sceneManagement = GameObject.FindWithTag("GameManager").GetComponent<SceneManagement>();
@@ -74,7 +76,10 @@ public class PlayerManager : MonoBehaviour
         healthPoints = maxHealthPoints;
         hasPickup = null;
 
-        ScoreData.instance.score = 0;
+        if (ScoreData.instance != null)
+        {
+            ScoreData.instance.levelScore = 0;
+        }
         //for (int k = 0; k < healthBarRef.Length - 1; k++)
         //{
         //    healthBars.Add(healthBarRef[k]);
@@ -99,12 +104,14 @@ public class PlayerManager : MonoBehaviour
     {
         if(isPaused == false)
         {
+            walkSound.Pause();
             isPaused = true;
             Time.timeScale = 0;
             SceneManager.LoadScene(4, LoadSceneMode.Additive);
         }
         else if (isPaused)
         {
+            walkSound.Play();
             isPaused = false;
             Time.timeScale = 1;
             SceneManager.UnloadSceneAsync(4);

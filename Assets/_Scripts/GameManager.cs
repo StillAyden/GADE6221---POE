@@ -37,7 +37,11 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         //DontDestroyOnLoad(this);
-        ScoreData.instance.levelScore = 0;
+
+        if (ScoreData.instance != null)
+        {
+            ScoreData.instance.levelScore = 0;
+        }
         isOrbBossActive = false;
         isDriverActive = false;
     }
@@ -116,6 +120,15 @@ public class GameManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_2"))
         {
+            SpawnRecklessDriver();
+            yield return new WaitForSeconds(3f);
+            isDriverActive = false;
+            SpawnRecklessDriver();
+            yield return new WaitForSeconds(3f);
+            isDriverActive = false;
+            SpawnRecklessDriver();
+            yield return new WaitForSeconds(3f);
+            isDriverActive = false;
             SpawnRecklessDriver();
         }
 

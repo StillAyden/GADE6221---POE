@@ -39,7 +39,7 @@ public class data_SaveLoad : MonoBehaviour
 
         leaderboardList.AddToList(scoreData); 
 
-        string _data = JsonUtility.ToJson(leaderboardList.allScoreData);
+        string _data = JsonUtility.ToJson(leaderboardList);
         File.WriteAllText(filePath, _data);
 
         Debug.Log("SAVE");
