@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     PlayerManager playerManager;
 
     [Header("HUD")]
-    [SerializeField] Canvas HUD;
+    public Canvas HUD;
     public Text score;
     [SerializeField] Image[] healthBarRef = new Image[3];
     [SerializeField] Image pickupImage;
@@ -18,13 +18,16 @@ public class UIManager : MonoBehaviour
 
 
     [Header("Death Screen")]
-    [SerializeField] Canvas deathScreen;
+    public Canvas deathScreen;
     public Text finalScore;
 
     private void Awake()
     {
         scoreCounter = GetComponent<ScoreCounter>();
         playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+
+        DontDestroyOnLoad(HUD);
+        DontDestroyOnLoad(deathScreen);
     }
 
     public void ShowDeathScreen()
@@ -98,4 +101,10 @@ public class UIManager : MonoBehaviour
             pickupImage.sprite = pickupIcons[0];
         }
     }
+
+    public void SaveData()
+    {
+
+    }
+
 }

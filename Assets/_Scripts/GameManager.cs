@@ -6,32 +6,48 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    ScoreCounter scoreCounter;
 
     [Header("Rounds")]
     [Range(10, 1000)][SerializeField] int levelLength;
-    int levelScore;
+    [SerializeField] float levelLengthInSeconds;
+    //int levelScore;
+    bool isHalfway = false;
+    bool isEnd = false;
+    Coroutine timerCoroutine = null; 
 
     [Header("Boss Orb")]
     [SerializeField] GameObject bossOrb;
     public Transform initialSpawn;
     public bool isOrbBossActive;
 
-    //[Header("Reckless Driver")]
-    //[SerializeField] GameObject RecklessDriver;
+    [Header("Reckless Driver")]
+    [SerializeField] GameObject recklessDriver;
+    [SerializeField] Transform driverInitialSpawn;
+    bool isDriverActive;
+
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         //DontDestroyOnLoad(this);
-        scoreCounter = GetComponent<ScoreCounter>();
-
-        levelScore = 0;
+        ScoreData.instance.levelScore = 0;
         isOrbBossActive = false;
+        isDriverActive = false;
     }
 
     private void Update()
     {
-        CheckAndSpawnOrbBoss();
-        ChangeLevel();
+        if (timerCoroutine == null)
+        {
+            timerCoroutine = StartCoroutine(halfLevelTimer());
+        }
     }
 
     public void CheckAndSpawnOrbBoss()
@@ -43,29 +59,70 @@ public class GameManager : MonoBehaviour
                 if (ScoreData.instance.score == levelLength || ScoreData.instance.score == levelLength + 1 || ScoreData.instance.score == levelLength - 1)
                 {
                     isOrbBossActive = true;
-                    //Debug.Log("SpawnBoss");
                     Instantiate(bossOrb, initialSpawn.position, Quaternion.identity);
                 }
             }
         }
     }
+
+    void SpawnOrbBoss()
+    {
+        if (!isOrbBossActive)
+        {
+            isOrbBossActive = true;
+            Instantiate(bossOrb, initialSpawn.position, Quaternion.identity);
+        }
+    }
+
+    void SpawnRecklessDriver()
+    {
+        if (!isDriverActive)
+        {
+            isDriverActive = true;
+            Instantiate(recklessDriver, driverInitialSpawn.position, Quaternion.identity);
+        }
+    }
     
     public void ChangeLevel()
     {
-        if ((ScoreData.instance.score == levelLength * 2) && (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("WorldControlTest")))
+        this.GetComponent<TerrainControl>().enabled = false;
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("WorldControlTest"))
         {
             SceneManager.LoadScene("Level_2");
             incremementLevelScore();
+            this.GetComponent<TerrainControl>().enabled = true;
         }
-        else if ((ScoreData.instance.score == levelLength * 2) && (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_2")))
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_2"))
         {
             SceneManager.LoadScene("WorldControlTest");
             incremementLevelScore();
+            this.GetComponent<TerrainControl>().enabled = true;
         }
     }
 
     public void incremementLevelScore()
     {
-        levelScore++;
+        ScoreData.instance.levelScore++;
+    }
+
+    IEnumerator halfLevelTimer()
+    {
+        yield return new WaitForSeconds(levelLengthInSeconds);
+        isHalfway = true;
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("WorldControlTest"))
+        {
+            SpawnOrbBoss();
+        }
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_2"))
+        {
+            SpawnRecklessDriver();
+        }
+
+        yield return new WaitForSeconds(levelLengthInSeconds);
+        isEnd = true;
+        timerCoroutine = null;
+
+        ChangeLevel();
     }
 }

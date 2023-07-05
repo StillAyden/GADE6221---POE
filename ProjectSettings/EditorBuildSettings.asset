@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/WorldControlTest.unity
     guid: 46407e2f502ae6c4995d70e79aba9500
   - enabled: 1
-    path: Assets/Scenes/DeathScreen.unity
-    guid: c99fbb90fe6981345ac3fc2d02bff9a6
-  - enabled: 1
     path: Assets/Scenes/Level_2.unity
     guid: 93be807323f0c8145b7cd1e533eba423
   - enabled: 1
+    path: Assets/Scenes/DeathScreen.unity
+    guid: c99fbb90fe6981345ac3fc2d02bff9a6
+  - enabled: 1
     path: Assets/Scenes/PauseMenu.unity
     guid: 7a42ecaf01c7589499c8ccb95b69e059
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: 617cea9486e84ea439cfb9978f5c93c8
   m_configObjects: {}

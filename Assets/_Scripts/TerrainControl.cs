@@ -27,7 +27,7 @@ public class TerrainControl : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 1f;
 
-    private void Awake()
+    private void OnEnable()
     {
         GetPrefabs();
         loadedGroundedPrefabs = new GameObject[prefabsLoaded];
@@ -38,9 +38,7 @@ public class TerrainControl : MonoBehaviour
         {
             tileSpawnPoints[i] = i * groundPrefabSize;
         }
-    }
-    private void Start()
-    {
+
         InitialTileSpawn();
     }
 
@@ -141,5 +139,10 @@ public class TerrainControl : MonoBehaviour
                 currentLevelGroundPrefabCollection[k] = secondLevelGroundPrefabCollection[k];
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        previousPrefabIndex = 0;
     }
 }

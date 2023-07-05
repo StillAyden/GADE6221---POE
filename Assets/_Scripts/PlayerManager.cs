@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -51,8 +52,11 @@ public class PlayerManager : MonoBehaviour
     [Header("Power-Up: Immunity")]
     public bool isImmunityActive = false;
 
+    bool isPaused = false;
+
     private void Awake()
     {
+
         //DontDestroyOnLoad(this);
         instance = this;
         inputs = new InputSystem();
@@ -67,6 +71,7 @@ public class PlayerManager : MonoBehaviour
         healthPoints = maxHealthPoints;
         hasPickup = null;
 
+        ScoreData.instance.score = 0;
         //for (int k = 0; k < healthBarRef.Length - 1; k++)
         //{
         //    healthBars.Add(healthBarRef[k]);
@@ -84,6 +89,23 @@ public class PlayerManager : MonoBehaviour
         inputs.Player.Restart.performed += x => Restart();
         //Slide not impletemented yet
         inputs.Player.SlideForceDown.performed += x => Slide();
+        inputs.Player.Pause.performed += x => Pause();
+    }
+
+    private void Pause()
+    {
+        if(isPaused == false)
+        {
+            isPaused = true;
+            Time.timeScale = 0;
+            SceneManager.LoadScene(4, LoadSceneMode.Additive);
+        }
+        else if (isPaused)
+        {
+            isPaused = false;
+            Time.timeScale = 1;
+            SceneManager.UnloadSceneAsync(4);
+        }
     }
 
     private void OnDisable()
@@ -96,7 +118,7 @@ public class PlayerManager : MonoBehaviour
         rb.velocity = new Vector3(moveInput * moveForce * Time.fixedDeltaTime, rb.velocity.y, rb.velocity.z);
 
         //Increase speed
-        terrainControl.moveSpeed += 0.00001f;
+        terrainControl.moveSpeed += 0.00002f;
     }
 
     private void Update()
@@ -106,7 +128,8 @@ public class PlayerManager : MonoBehaviour
         if (healthPoints <= 0)
             OnDeath();
 
-        uiManager.UpdateHealth();
+        if (uiManager != null) {
+            uiManager.UpdateHealth(); }
     }
 
     private void OnTriggerEnter(Collider col)
@@ -178,7 +201,7 @@ public class PlayerManager : MonoBehaviour
     }
     void Restart()
     {
-        sceneManagement.ReloadCurrentScene();
+        sceneManagement.MoveToScene(1);
     }
 
     IEnumerator OnDeathTimed()
@@ -194,11 +217,15 @@ public class PlayerManager : MonoBehaviour
 
     void OnDeath()
     {
-        sceneManagement.MoveToScene(2);
+        sceneManagement.MoveToScene(3);
         hasPickup = null;
 
+        Destroy(GameObject.FindWithTag("GameManager"));
+        Destroy(uiManager.deathScreen.gameObject);
+        Destroy(uiManager.HUD.gameObject);
+
         //Save data here
-        ScoreData.instance.score = 0;
+        
     }
 
     #region Pickups
