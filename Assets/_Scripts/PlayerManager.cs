@@ -54,6 +54,9 @@ public class PlayerManager : MonoBehaviour
 
     bool isPaused = false;
 
+    [Header("Audio")]
+    [SerializeField]AudioSource coinPickupSound;
+    [SerializeField] AudioSource jumpSound;
     private void Awake()
     {
 
@@ -147,6 +150,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(obj.GetComponent<Pickups>() == true)
         {
+            coinPickupSound.Play();
             Pickups pickup = obj.gameObject.GetComponent<Pickups>();
             
             if (pickup.pickupType == Pickups.PickupType.ScoreMultiplier)
@@ -186,6 +190,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (isGrounded)
         {
+            jumpSound.Play();
             rb.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
         }
     }
